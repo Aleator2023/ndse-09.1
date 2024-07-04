@@ -1,0 +1,9 @@
+docker pull busybox
+docker run --name pinger busybox ping -c 7 netology.ru
+docker ps -a
+docker logs pinger
+docker start pinger
+docker ps -a
+docker logs pinger
+docker rm pinger
+docker rmi busybox
