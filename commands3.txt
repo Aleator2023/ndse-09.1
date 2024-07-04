@@ -1,0 +1,17 @@
+docker pull node:15.14
+docker rm first_node
+docker rm second_node
+docker run -it --name first_node -v C:\Users\User\Desktop\OBUCHE~1\node.js\NDSE-0~1.1\data:/var/first/data node:15.14 /bin/bash
+echo "Это тестовый файл в контейнере first_node" > /var/first/data/container_file.txt
+exit
+echo "Это файл на хостовой машине" > ./data/host_file.txt
+docker run -it --name second_node -v C:\Users\User\Desktop\OBUCHE~1\node.js\NDSE-0~1.1\data:/var/second/data node:15.14 /bin/bash
+ls /var/second/data
+cat /var/second/data/container_file.txt
+cat /var/second/data/host_file.txt
+exit
+docker stop first_node
+docker stop second_node
+docker rm first_node
+docker rm second_node
+docker rmi node:15.14
